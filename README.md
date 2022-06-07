@@ -1,2 +1,2 @@
 # FSO2022
-fullstackopen 2022 repository
+fso 2022 repository

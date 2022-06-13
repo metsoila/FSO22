@@ -9,6 +9,7 @@ const Button = ({handleClick, text}) => {
 }
 
 const StatisticLine = ({text, value}) => {
+  //Adds text and value to table as one row
   console.log(text, value)
   return (
     <tbody>
@@ -25,6 +26,7 @@ const Statistics = ({Stats}) => {
   console.log(Stats)
   const [good, neutral, bad, all] = Stats
 
+  //If feedback hasn't been given this will be printed
   if (all === 0) {
     return (
       <div>

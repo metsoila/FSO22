@@ -48,6 +48,7 @@ const Statistics = ({Stats}) => {
   )
 }
 
+
 const App = () => {
   const [good, setGood] = useState(0)
   const [neutral, setNeutral] = useState(0)
@@ -60,17 +61,17 @@ const App = () => {
     setGood(good + 1)
     setAll(all + 1)
   }
-
+  
   const handleNeutralClick = () => {
     setNeutral(neutral + 1)
     setAll(all + 1)
   }
-
+  
   const handleBadClick = () => {
     setBad(bad + 1)
     setAll(all + 1)
   }
-
+  
   return (
     <div>
       <h1> give feedback </h1>

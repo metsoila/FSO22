@@ -14,6 +14,7 @@ function getRandomInt(max) {
   return Math.floor(Math.random() * max);
 }
 
+
 const App = () => {
   const anecdotes = [
     'If it hurts, do it more often.',
@@ -24,22 +25,35 @@ const App = () => {
     'Debugging is twice as hard as writing the code in the first place. Therefore, if you write the code as cleverly as possible, you are, by definition, not smart enough to debug it.',
     'Programming without an extremely heavy use of console.log is same as if a doctor would refuse to use x-rays or blood tests when dianosing patients.'
   ]
-  console.log(anecdotes)
-   
+
+  const [votes, setVotes] = useState({ 
+    0: 0, 1: 0, 2: 0, 3: 0, 4: 0, 5: 0, 6: 0
+  })
+
+  //'selected' is used as an index for anecdotes-list. 
   const [selected, setSelected] = useState(0)
 
-  //Random integer called between {0, list length - 1)} as index. 
   const handleNextClick = () => {
+  //Random integer called between {0, list length - 1)} as index.
     setSelected(getRandomInt(anecdotes.length))
   }
 
-  console.log('Index: ', selected)
+  const handleVoteClick = () => {
+    setVotes({ ...votes, [selected]: votes[selected] + 1})
+    console.log('votes', votes)
+  }
+
+  const hasVotes = 'has ' + votes[selected] + ' votes'
+
+  console.log('Index:', selected, anecdotes[selected])
   return (
     <div>
       <p>{anecdotes[selected]}</p>
+      
+      <p>{hasVotes}</p>
 
       <Button handleClick={handleNextClick} text='next anecdote'/>
-
+      <Button handleClick={handleVoteClick} text='vote'/>
     </div>
   )
 }

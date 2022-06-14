@@ -1,5 +1,7 @@
 import { useState } from 'react'
 
+
+
 const Button =({handleClick, text}) => {
   return (
     <button onClick={handleClick}>
@@ -14,6 +16,18 @@ function getRandomInt(max) {
   return Math.floor(Math.random() * max);
 }
 
+
+const FindMostVotes = ({anecdotes, list}) => {
+  const mostVotes = Number(Object.keys(list).reduce(function(a, b){ return list[a] > list[b] ? a : b }))
+  console.log('Most (key&value):',mostVotes, list[[mostVotes]])
+
+  return (
+    <>
+    <p>{anecdotes[mostVotes]}</p>
+    <p>{'has '} {list[mostVotes]} {' votes'}</p>
+    </>
+  )
+}
 
 const App = () => {
   const anecdotes = [
@@ -40,20 +54,25 @@ const App = () => {
 
   const handleVoteClick = () => {
     setVotes({ ...votes, [selected]: votes[selected] + 1})
-    console.log('votes', votes)
   }
 
-  const hasVotes = 'has ' + votes[selected] + ' votes'
 
-  console.log('Index:', selected, anecdotes[selected])
+  console.log('Index & anecdote:', selected, anecdotes[selected])
+  console.log('votes', votes)
   return (
     <div>
+      <h1>Anecdote of the day</h1>
+
       <p>{anecdotes[selected]}</p>
       
-      <p>{hasVotes}</p>
+    <p>{'has '} {votes[selected]} {' votes'}</p>
 
       <Button handleClick={handleNextClick} text='next anecdote'/>
       <Button handleClick={handleVoteClick} text='vote'/>
+
+      <h1>Anecdote with the most votes</h1>
+      
+      <FindMostVotes anecdotes={anecdotes} list={votes}/>
     </div>
   )
 }

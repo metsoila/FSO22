@@ -7,29 +7,23 @@ const Header = (props) => {
   )
 }
 
-const Part = ({name, exercises}) =>{
-  console.log(name, exercises)
-  return (
-    <p>
-      {name} {exercises}
-    </p>
-  )
-}
 
 const Content = ({parts}) => {
-  console.log(parts)
-  const [p1,p2,p3] = parts
+  
   return (
     <div>
-      <Part name={p1.name} exercises={p1.exercises}/>
-      <Part name={p2.name} exercises={p2.exercises}/>
-      <Part name={p3.name} exercises={p3.exercises}/>
+      {parts.map(part=>
+        <p>
+          {part.name} {part.exercises}
+        </p>
+      )}
     </div>
     )
 }
 
 
 const Total = ({parts}) => {
+  
   const total = parts.reduce((acc, obj) => {
     console.log('Reduce:', acc, obj)
     return acc + obj.exercises;

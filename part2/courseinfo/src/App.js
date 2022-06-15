@@ -30,12 +30,15 @@ const Content = ({parts}) => {
 
 
 const Total = ({parts}) => {
-  console.log(parts)
-  const [p1,p2,p3] = parts
+  const total = parts.reduce((acc, obj) => {
+    console.log('Reduce:', acc, obj)
+    return acc + obj.exercises;
+  }, 0);
+
   return (
-    <p>
-      Total number of exercises: {p1.exercises + p2.exercises + p3.exercises}
-    </p>
+    <h4>
+      Total number of exercises: {total}
+    </h4>
   )
 }
 
@@ -48,6 +51,7 @@ const Course = ({course}) => {
     <>
       <Header name={name}/>
       <Content parts={parts}/>
+      <Total parts={parts}/>
     </>
   )
 }

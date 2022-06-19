@@ -24,9 +24,9 @@ const Content = ({parts}) => {
 
 const Total = ({parts}) => {
   
-  const total = parts.reduce((acc, obj) => {
-    console.log('Reduce:', acc, obj)
-    return acc + obj.exercises;
+  const total = parts.reduce((prev, current) => {
+    console.log('Reduce:', prev, current)
+    return prev + current.exercises;
   }, 0);
 
   return (

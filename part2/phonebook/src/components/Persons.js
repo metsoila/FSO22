@@ -1,3 +1,4 @@
+
 const Person = ({ name, number, filter }) => {
     console.log('name:', name, ' number:', number)
     filter = filter.toLowerCase()
@@ -12,4 +13,15 @@ const Person = ({ name, number, filter }) => {
     }
 }
 
-export default Person
+const Persons = ({persons, newFilter}) => {
+   
+   return (
+        <div>
+            {persons.map(person =>
+            <Person name={person.name} number={person.number} filter={newFilter}/>
+            )}
+        </div>
+   )
+}
+
+export default Persons

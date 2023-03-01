@@ -44,13 +44,16 @@ app.get('/api/persons/:id', (request, response) => {
 
 })
 
-app.get('/api/persons/:id', (request, response) => {
-    const id = Number(request.params.id)
-    const person = persons.find(person => person.id !== id)
-
-    response.status(204).end()
-
+app.get('/info', (request, response) => {
+  const num = persons.length
+  response.send(
+      `<p>Phonebook has info for ${num} people</p>
+       <p>${new Date()}</p>`
+    )
 })
+
+
+
 
 const generateId = () => {
     const maxId = persons.length > 0
